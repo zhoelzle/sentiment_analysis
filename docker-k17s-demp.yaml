@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-k17s-sentiment-analysis-deployment  # Deployment name
+spec:
+  replicas: 1  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: docker-k17s-sentiment-analysis  # Match label for pod selection
+  template:
+    metadata:
+      labels:
+        app: docker-k17s-sentiment-analysis  # Label for pods in the deployment
+    spec:
+      containers:
+      - name: docker-k17s-sentiment-analysis  # Container name
+        image: zhoelzle/sentiment_analysis  # Container image
+        ports:
+        - containerPort: 8080  # Container port
